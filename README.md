@@ -23,7 +23,7 @@ A K Q J 10 9 8 7 6 5 4 3 2
 * Melds - Can be sets or runs
 * Sets - Same valued cards, can be of different suits, minimum 3 cards
 * Run consists of at least three consecutive cards of the same suit
-* Must Contain one natural sequence and one with wild card
+* Must Contain 2 sequences - Both natural or one natural sequence and one with wild card
 
 ##Hearts
 * Q of spades -13pts

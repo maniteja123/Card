@@ -2,26 +2,39 @@ package card;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Main {
 
+	private static int MIN_LIMIT = 1;
+	private static int MAX_LIMIT = 13;
+	private static int NO_OF_PLAYERS = 4;
 	
 	public static void main(String[] args) {
-		Card one = new Card(1, Suit.HEART);
-		Card two = new Card(2, Suit.HEART);
-		Card three = new Card(3, Suit.HEART);
-		List<Card> cards = new ArrayList<>();
-		cards.add(three);
-		cards.add(two);
-		cards.add(one);
-		for(Card card : cards) {
-			System.out.print(card.getValue() +  " ");
+		int noOfCards = MAX_LIMIT - MIN_LIMIT + 1;
+		ArrayList<Hand> hands = new ArrayList<>();
+		for(int player=1; player<=NO_OF_PLAYERS; player++) {
+			Hand hand = new Hand(noOfCards);
+	 		for(int value=MIN_LIMIT; value<MAX_LIMIT; value++) {
+				for(Suit suit : Suit.values()) {
+					Card card = new Card(value, suit);
+					hand.addCard(card);
+				}
+			}
+	 		hands.add(hand);
+		}
+		for(Hand hand: hands) {
+//			System.out.println(hand.getListOfCards().size());
+			for(Card card : hand.getListOfCards()) {
+				System.out.print(card.getValue() +  " ");
+			}
+			System.out.println();
 		}
 		System.out.println();
-		Collections.sort(cards);
-		for(Card card : cards) {
-			System.out.print(card.getValue() +  " ");
+		for(Hand hand: hands) {
+			for(Card card : hand.getSortedCards()) {
+				System.out.print(card.getValue() +  " ");
+			}
+			System.out.println();
 		}
 		System.out.println();
 	}

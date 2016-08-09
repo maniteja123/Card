@@ -14,28 +14,44 @@ public class Card implements Comparable<Card> {
 		this.value = value;
 		this.suit = suit;
 	}
-	
+
 	public static boolean areInSequence(ArrayList<Card> cards) {
-		//sort and check
-	
-		return true;
-	}
-	/**
-	 * 
-	 * @param cards
-	 * @return
-	 */
-	public static boolean isSameSuit(ArrayList<Card> cards) {
-		//check same suit
+		cards.sort();
+		int flag = 0;
+		int x = cards.get(0).value;
+		
+		for (int i=1;i<cards.size();i++)
+		{
+			if((cards.get(i)-x) !=1)
+				flag=1;
+			x=cards.get(i).value;
+		}
+		
+		if(flag==1)
+			return false;
 		
 		return true;
 	}
-	
+
+	public static boolean isSameSuit(ArrayList<Card> cards) {
+		int flag = 0;
+		int x = cards.get(0)
+				
+		for (int i=1;i<cards.size();i++)
+		{
+			if((cards.get(i)-x) !=1)
+				flag=1;
+			x=cards.get(i);
+		}
+		
+		return true;
+	}
+
 	public static Map<Integer, Integer> getFreqOfCards(ArrayList<Card> cards) {
-		//returning values : freq
+
 		return null;
 	}
-	
+
 	public static Map<String, Integer> getFreqOfSuits(ArrayList<Card> cards) {
 		Map<String,String> 
 		
@@ -45,12 +61,12 @@ public class Card implements Comparable<Card> {
 		}
 		return null;	
 	}
-		
-	@Override 
+
+	@Override
 	public int compareTo(Card card) {
 		return card.value - this.value;
 	}
-	
+
 	public Suit getSuit() {
 		return suit;
 	}

@@ -2,7 +2,7 @@ package card;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
+import java.util.HashMap;
 
 public class Card implements Comparable<Card> {
 
@@ -16,50 +16,65 @@ public class Card implements Comparable<Card> {
 	}
 
 	public static boolean areInSequence(ArrayList<Card> cards) {
-		cards.sort();
+		Collections.sort(cards);
 		int flag = 0;
 		int x = cards.get(0).value;
-		
-		for (int i=1;i<cards.size();i++)
-		{
-			if((cards.get(i)-x) !=1)
-				flag=1;
-			x=cards.get(i).value;
+
+		for (int i = 1; i < cards.size(); i++) {
+			if (Math.abs((cards.get(i).value - x)) != 1)
+				flag = 1;
+			x = cards.get(i).value;
 		}
-		
-		if(flag==1)
+
+		if (flag == 1)
 			return false;
-		
+
 		return true;
 	}
 
 	public static boolean isSameSuit(ArrayList<Card> cards) {
 		int flag = 0;
-		int x = cards.get(0)
-				
-		for (int i=1;i<cards.size();i++)
-		{
-			if((cards.get(i)-x) !=1)
-				flag=1;
-			x=cards.get(i);
+		Card x = cards.get(0);
+
+		for (int i = 1; i < cards.size(); i++) {
+
+			if (x.getSuit() != cards.get(i).getSuit()) {
+				flag = 1;
+			}
 		}
-		
+
+		if (flag == 1)
+			return false;
+
 		return true;
 	}
 
-	public static Map<Integer, Integer> getFreqOfCards(ArrayList<Card> cards) {
+	public static HashMap<Integer, Integer> getFreqOfCards(ArrayList<Card> cards) {
 
-		return null;
+		HashMap<Integer, Integer> cardFreq = new HashMap<Integer, Integer>();
+
+		for (Card c : cards) {
+
+			if (cardFreq.containsKey(c.value)) 
+				cardFreq.put(c.value, cardFreq.get(c.value) + 1);
+			else 
+				cardFreq.put(c.value, 1);
+		}
+
+		return cardFreq;
 	}
 
-	public static Map<String, Integer> getFreqOfSuits(ArrayList<Card> cards) {
-		Map<String,String> 
-		
-		for (Card c :cards )
-		{
-			
+	public static HashMap<Suit, Integer> getFreqOfSuits(ArrayList<Card> cards) {
+		HashMap<Suit, Integer> suitFreq = new HashMap<Suit,Integer>();
+
+		for (Card c : cards) {
+			if (suitFreq.containsKey(c.getSuit()))
+				suitFreq.put(c.getSuit(), suitFreq.get(c.getSuit()) + 1);
+			else
+				suitFreq.put(c.getSuit(), 1);
 		}
-		return null;	
+
+		return suitFreq;
 	}
 
 	@Override
@@ -91,4 +106,15 @@ public class Card implements Comparable<Card> {
 		this.isJoker = isJoker;
 	}
 
+	public static void main(String[] args) {
+		Card a = new Card(1, Suit.HEART);
+		Card d = new Card(3, Suit.DIAMOND);
+		Card b = new Card(2, Suit.DIAMOND);
+
+		ArrayList<Card> c = new ArrayList<Card>();
+		c.add(a);
+		c.add(b);
+		c.add(d);
+		System.out.println(Card.areInSequence(c));
+	}
 }

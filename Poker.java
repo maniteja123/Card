@@ -12,7 +12,8 @@ public class Poker extends Game {
 	private static int numberOfPlayers;
 	private static int numberOfCardsInHand;
 	private ArrayList<Card> table;
-
+	String [] VALUE = {"","ROYAL FLUSH","STRAIGHT FLUSH","FOUR OF A KIND","FULL HOUSE","FLUSH","STRAIGHT","THREE OF A KIND","TWO PAIRS","ONE PAIR","HIGH HAND"};
+    ArrayList<Card> hand;
 	public Poker(int numberOfPlayers) {
 		this.numberOfDecks = 1;
 		this.numberOfPlayers = numberOfPlayers;
@@ -23,7 +24,8 @@ public class Poker extends Game {
 	public void calculate() {
 		// TODO Auto-generated method stub
 		
-		//int score = evaluate(hand);
+		int score = evaluate(hand);
+		
 
 	}
 

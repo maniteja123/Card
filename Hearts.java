@@ -1,6 +1,5 @@
+package card;
 import java.util.ArrayList;
-
-//package card;
 
 public class Hearts extends Game {
 

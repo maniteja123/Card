@@ -1,4 +1,4 @@
-package card;
+//package card;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +9,7 @@ public class Hand {
 	
 	public Hand(int noOfCards) {
 		this.noOfCards = noOfCards;
-		this.cards = new ArrayList<>();
+		this.cards = new ArrayList<Card>();
 	}
 	
 	public void addCard(Card card) {
@@ -20,5 +20,9 @@ public class Hand {
 		ArrayList<Card> sortedCards = this.cards;
 		Collections.sort(sortedCards);
 		return sortedCards;
+	}
+	
+	public ArrayList<Card> getListOfCards(){
+		return cards;
 	}
 }
